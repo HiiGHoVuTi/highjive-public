@@ -11,13 +11,14 @@ Enjoy !
 ### Main Game
 This game is pretty light, so it can be downloaded whole in a zip file [here](https://github.com/HiiGHoVuTi/highjive-public/releases). Pick the appropriate Operating System.
 
-### Aubio
-For any non-OST track (all of them for now), you will need [aubioonset](https://github.com/aubio/aubio), which is downloadable easily on OSs with package managers: (arch example)
-```sh
-$ pacman -S aubio
+However, on the first install, you need to have a few dependencies on your system, including:
+```yaml
+- SDL
+- SDL-Mixer
+- Python (for packages)
+- Aubio
 ```
-Otherwise, use python to install, or reach out to their repository.
-In later releases, `aubioonset` will be provided with the game.
+Thankfully, we made an installation tool that should take care of most of the annoying work for you. You can pick it up from this repo. All you need to run it is python.
 
 ## Gameplay
 There is no tutorial at the moment, although the gameplay is simple. You have to guide the cursor to click on the white circles as they reach their full size. To do that, you can use the arrow keys (recommended) or a mouse (if you own a trackpad).
