@@ -24,9 +24,6 @@ class TColors:
         print(TColors.OKBLUE + "SUCCESS: " + text + TColors.ENDC)
 
 
-
-SDL_PATH = "https://github.com/libsdl-org/SDL"
-
 def execute_commands(name, commands):
     for command in commands:
         exit_code = os.system(command())
@@ -87,6 +84,8 @@ cleanup_posix_commands = [
 
 
 if __name__ == "__main__":
+    if input("Are you running this tool in an empty folder ? (y/N)") != "y":
+        exit()
     if os.name == "posix":
         if not execute_commands("SDL Installation", sdl_posix_commands):
             exit()
