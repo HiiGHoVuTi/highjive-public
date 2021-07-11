@@ -28,7 +28,7 @@ def execute_commands(name, commands):
     for command in commands:
         exit_code = os.system(command())
         if exit_code != 0:
-            TColors.print_error("Couldn't install the dependencies.", "Failed at step: " + name, ["While executing", command(), "Read trace above."])
+            TColors.print_error("Couldn't install the dependencies.", "Failed at step: " + name, ["While executing:", command(), "Read trace above."])
             return False
     TColors.print_success("Done with step: " + name)
     return True
@@ -78,7 +78,9 @@ aubio_posix_commands   = [
     lambda: "pip install aubio"
 ]
 cleanup_posix_commands = [
-    lambda: "rm -rf ./*/",
+    lambda: "rm -rf " + glob_sdl_folder(),
+    lambda: "rm -rf " + glob_mixer_folder(),
+    lambda: "rm -rf " + glob_aubio_folder(),
     lambda: "rm tmp.tar.gz"
 ]
 

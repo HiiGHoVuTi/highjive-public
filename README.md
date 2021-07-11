@@ -1,3 +1,6 @@
+
+Contrary to the main game's code, the dependency control and installation process are totally open-source, along with anything community-made that will be here. We thus encourage you to contribute if you want to make High Jive a better experience !
+
 # High Jive public files
 
 High Jive is a heavily WIP game, so don't expect a full game. You are however encouraged to enjoy it and report any feedback to the creator over on [discord](https://discord.gg/7rWGcmxE8F).
