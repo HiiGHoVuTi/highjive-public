@@ -23,6 +23,13 @@ However, on the first install, you need to have a few dependencies on your syste
 ```
 Thankfully, we made an installation tool that should take care of most of the annoying work for you. You can pick it up from this repo. All you need to run it is python.
 
+To get the installation tool, just use curl:
+```sh
+# In an empty folder
+$ curl https://raw.githubusercontent.com/HiiGHoVuTi/highjive-public/main/install.py
+$ python3 install.py
+```
+
 ## Gameplay
 There is no tutorial at the moment, although the gameplay is simple. You have to guide the cursor to click on the white circles as they reach their full size. To do that, you can use the arrow keys (recommended) or a mouse (if you own a trackpad).
 
