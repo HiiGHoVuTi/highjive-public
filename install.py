@@ -1,5 +1,6 @@
 
 import os
+import platform
 from glob import glob
 
 class TColors:
@@ -42,7 +43,7 @@ def glob_sdl_folder():
 def glob_mixer_folder():
     return glob("hunter*")[0]
 
-sdl_posix_commands     = [
+sdl_linux_commands     = [
     lambda: magic_curl("libsdl-org", "SDL"),
     lambda: "tar -xf tmp.tar.gz",
     lambda:
@@ -54,13 +55,12 @@ cd build
 """,
     lambda:
 f"""
-cd {glob_sdl_folder()}
-cd build
+cd {glob_sdl_folder()}/build
 make
 sudo make install
 """
 ]
-mixer_posix_commands   = [
+mixer_linux_commands   = [
     lambda: magic_curl("libsdl-org", "SDL_mixer"),
     lambda: "tar -xf tmp.tar.gz",
     lambda:
@@ -79,10 +79,10 @@ sudo make install
 ]
 sdl_windows_commands   = []
 mixer_windows_commands = []
-aubio_posix_commands   = [
+aubio_linux_commands   = [
     lambda: "pip install aubio"
 ]
-cleanup_posix_commands = [
+cleanup_linux_commands = [
     lambda: "rm -rf " + glob_sdl_folder(),
     lambda: "rm -rf " + glob_mixer_folder(),
     lambda: "rm tmp.tar.gz"
@@ -90,14 +90,27 @@ cleanup_posix_commands = [
 
 
 if __name__ == "__main__":
-    if os.name == "posix":
-        if not execute_commands("SDL Installation", sdl_posix_commands):
+    if platform.system() == "Linux":
+        release = platform.release().upper()
+
+        if "UBUNTU" in release or "DEBIAN" in release:
+            execute_commands("Dependencies collection", [lambda: "sudo apt-get install libgtk2.0-dev libpango1.0-dev libglib2.0-dev libcairo2-dev libpangocairo-1.0-0 libsdl2-dev libsdl2-mixer-*-dev"])
+            execute_commands("Aubio Installation", aubio_linux_commands)
             exit()
-        if not execute_commands("SDL Mixer Installation", mixer_posix_commands):
+
+        if "MANJARO" in release or "ARCH" in release:
+            execute_commands("SDL Installation", [lambda: "sudo pacman -S sdl2"])
+            execute_commands("Mixer Installation", [lambda: "sudo pacman -S sdl2_mixer"])
+            execute_commands("Aubio Installation", aubio_linux_commands)
             exit()
-        if not execute_commands("Aubio Installation", aubio_posix_commands):
+
+        if not execute_commands("SDL Installation", sdl_linux_commands):
             exit()
-        if not execute_commands("Cleanup", cleanup_posix_commands):
+        if not execute_commands("SDL Mixer Installation", mixer_linux_commands):
+            exit()
+        if not execute_commands("Aubio Installation", aubio_linux_commands):
+            exit()
+        if not execute_commands("Cleanup", cleanup_linux_commands):
             exit()
     else:
         TColors.print_error("Your OS isn't supported (yet)", "You can try to install the dependencies on your own, or wait for official support.", ["Required packages:", "- SDL", "- SDL Mixer", "- Aubio (aubioonset)"])
