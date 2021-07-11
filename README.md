@@ -26,7 +26,7 @@ Thankfully, we made an installation tool that should take care of most of the an
 To get the installation tool, just use curl:
 ```sh
 # In an empty folder
-$ curl https://raw.githubusercontent.com/HiiGHoVuTi/highjive-public/main/install.py -o install.py
+$ curl https://raw.githubusercontent.com/HiiGHoVuTi/highjive-public/main/install.py > install.py
 $ python3 install.py
 ```
 

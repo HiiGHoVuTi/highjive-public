@@ -61,7 +61,7 @@ sudo make install
 """
 ]
 mixer_posix_commands   = [
-    lambda: magic_curl("hunter-packages", "SDL_mixer"),
+    lambda: magic_curl("libsdl-org", "SDL_mixer"),
     lambda: "tar -xf tmp.tar.gz",
     lambda:
 f"""
