@@ -42,9 +42,6 @@ def glob_sdl_folder():
 def glob_mixer_folder():
     return glob("hunter*")[0]
 
-def glob_aubio_folder():
-    return glob("aubio*")[0]
-
 sdl_posix_commands     = [
     lambda: magic_curl("libsdl-org", "SDL"),
     lambda: "tar -xf tmp.tar.gz",
@@ -69,7 +66,15 @@ mixer_posix_commands   = [
     lambda:
 f"""
 cd {glob_mixer_folder()}
-cmake .
+mkdir build
+cd build
+../configure
+""",
+    lambda:
+f"""
+cd {glob_mixer_folder()}/build
+make
+sudo make install
 """
 ]
 sdl_windows_commands   = []
@@ -80,7 +85,6 @@ aubio_posix_commands   = [
 cleanup_posix_commands = [
     lambda: "rm -rf " + glob_sdl_folder(),
     lambda: "rm -rf " + glob_mixer_folder(),
-    lambda: "rm -rf " + glob_aubio_folder(),
     lambda: "rm tmp.tar.gz"
 ]
 

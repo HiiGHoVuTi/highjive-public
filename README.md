@@ -3,7 +3,7 @@ Contrary to the main game's code, the dependency control and installation proces
 
 # High Jive public files
 
-High Jive is a heavily WIP game, so don't expect a full game. You are however encouraged to enjoy it and report any feedback to the creator over on [discord](https://discord.gg/7rWGcmxE8F).
+High Jive is a heavily WIP game, so don't expect more than a crude demo. You are however encouraged to enjoy it and report any feedback to the creator over on [discord](https://discord.gg/7rWGcmxE8F).
 The full game will be released the [TBD] and will include the OST along with custom track support.
 There will be free updates, along with one-purchase DLC including online services like user-made maps, leaderboards and much more !
 
