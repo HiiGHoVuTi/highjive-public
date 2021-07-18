@@ -113,7 +113,7 @@ if __name__ == "__main__":
         if not execute_commands("Cleanup", cleanup_linux_commands):
             exit()
     if platform.system() == "Windows":
-        execute_commands("Stack installation", [lambda: "curl -sSL https://get.haskellstack.org/ | sh"])
+        print(TColors.WARNING + TColors.HEADER + "Please make sure stack is installed." + TColors.ENDC)
         execute_commands("Dependencies collection", [
             lambda: "stack exec -- pacman -S mingw-w64-x86_64-pango mingw-w64-x86_64-cairo",
             lambda: "stack exec -- pacman -S mingw-w64-x86_64-pkg-config mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_ttf",
