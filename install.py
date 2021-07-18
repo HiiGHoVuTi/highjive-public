@@ -115,9 +115,9 @@ if __name__ == "__main__":
     if platform.system() == "Windows":
         execute_commands("Stack installation", [lambda: "curl -sSL https://get.haskellstack.org/ | sh"])
         execute_commands("Dependencies collection", [
-            lambda: "stack exec -- pacman -S mingw-w64-x86_64-pango mingw-w64-x86_64-cairo"
-            lambda: "stack exec -- pacman -S mingw-w64-x86_64-pkg-config mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_ttf"
-            lambda: "pip install aubio"
+            lambda: "stack exec -- pacman -S mingw-w64-x86_64-pango mingw-w64-x86_64-cairo",
+            lambda: "stack exec -- pacman -S mingw-w64-x86_64-pkg-config mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_ttf",
+            lambda: "pip install aubio",
         ])
         exit()
     else:
